@@ -77,7 +77,9 @@ public class RobotTeleop extends LinearOpMode {
 
             // Output the safe vales to the motor drives.
             robot.leftDrive.setPower(gamepad1.left_stick_y);
-            robot.rightDrive.setPower(gamepad1.right_stick_y);
+            robot.rightDrive.setPower(gamepad1.left_stick_y);
+            robot.leftDrive.setPower(gamepad1.right_stick_x);
+            robot.rightDrive.setPower(-gamepad1.right_stick_x);
             telemetry.update();
         }
     }

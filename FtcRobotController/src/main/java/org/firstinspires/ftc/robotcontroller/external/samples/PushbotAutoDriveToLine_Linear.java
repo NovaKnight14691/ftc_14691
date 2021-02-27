@@ -55,7 +55,6 @@ import com.qualcomm.robotcore.hardware.LightSensor;
  */
 
 @Autonomous(name="Pushbot: Auto Drive To Line", group="Pushbot")
-@Disabled
 public class PushbotAutoDriveToLine_Linear extends LinearOpMode {
 
     /* Declare OpMode members. */

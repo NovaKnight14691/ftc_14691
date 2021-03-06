@@ -35,6 +35,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
+import org.firstinspires.ftc.teamcode.configuration.RobotConfigWith4motors;
 import org.firstinspires.ftc.teamcode.configuration.RobotConfiguration;
 
 /**
@@ -51,11 +52,11 @@ import org.firstinspires.ftc.teamcode.configuration.RobotConfiguration;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Pushbot: Teleop POV", group="Pushbot")
-public class RobotTeleop extends LinearOpMode {
+@TeleOp(name="Pushbot: TeleopMech POV", group="Pushbot")
+class RobotTeleopMecanum extends LinearOpMode {
 
     /* Declare OpMode members. */
-    RobotConfiguration robot = new RobotConfiguration();
+    RobotConfigWith4motors robot = new RobotConfigWith4motors();
     @Override
     public void runOpMode() {
 
@@ -78,10 +79,15 @@ public class RobotTeleop extends LinearOpMode {
             // Output the safe vales to the motor drives.
             robot.leftDrive.setPower(gamepad1.left_stick_y);
             robot.rightDrive.setPower(gamepad1.left_stick_y);
+            robot.bleftDrive.setPower(gamepad1.left_stick_y);
+            robot.brightDrive.setPower(gamepad1.left_stick_y);
             robot.leftDrive.setPower(gamepad1.right_stick_x);
+            robot.bleftDrive.setPower(-gamepad1.right_stick_x);
             robot.rightDrive.setPower(gamepad1.right_stick_x);
+            robot.brightDrive.setPower(-gamepad1.right_stick_x);
 
             telemetry.update();
         }
     }
 }
+

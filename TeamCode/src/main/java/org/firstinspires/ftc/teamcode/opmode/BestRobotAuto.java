@@ -70,15 +70,28 @@ public class BestRobotAuto extends LinearOpMode {
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
         // Step 1:  Drive forward for 3 seconds
-        robot.leftDrive.setPower(FORWARD_SPEED);
-        robot.rightDrive.setPower(FORWARD_SPEED);
-        sleep(3000);
+        if(robot.distance.getDistance(DistanceUnit.CM)<30){
+            robot.leftDrive.setPower(0.7);
+            robot.bleftDrive.setPower(0.7);
+            robot.rightDrive.setPower(0.7);
+            robot.brightDrive.setPower(0.7);
 
+            sleep(1000);
 
-        telemetry.addData("distance", robot.distance.getDeviceName() );
-        telemetry.addData("range", String.format("%.01f cm", robot.distance.getDistance(DistanceUnit.CM)));
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
+        }else{
+            robot.leftDrive.setPower(0.7);
+            robot.bleftDrive.setPower(0.7);
+            robot.rightDrive.setPower(-0.7);
+            robot.brightDrive.setPower(-0.7);
+        }
+
+        int i = 1;
+while(i < 2){
+            telemetry.addData("distance", robot.distance.getDeviceName());
+            telemetry.addData("range", String.format("%.01f cm", robot.distance.getDistance(DistanceUnit.CM)));
+            telemetry.addData("Path", "Complete");
+            telemetry.update();
+            sleep(1000);
+        }
     }
 }

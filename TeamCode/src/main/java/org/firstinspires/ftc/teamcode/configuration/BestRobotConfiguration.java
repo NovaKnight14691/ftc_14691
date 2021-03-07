@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.configuration;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -14,7 +15,7 @@ public class BestRobotConfiguration
     public DcMotor rightDrive = null;
     public DcMotor bleftDrive = null;
     public DcMotor brightDrive = null;
-
+    public DistanceSensor distance = null;
 
     /* local OpMode members. */
     HardwareMap hwMap =  null;
@@ -29,6 +30,8 @@ public class BestRobotConfiguration
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;
+        DistanceSensor sensorColorRange;
+
 
         // Define and Initialize Motors
         leftDrive  = hwMap.get(DcMotor.class, "left_drive");
@@ -45,7 +48,7 @@ public class BestRobotConfiguration
         bleftDrive.setPower(0);
         brightDrive.setPower(0);
 
-        SensorREV2mDistance distance = hwMap.get(SensorREV2mDistance.class, "distance");
+        distance = hwMap.get(DistanceSensor.class, "distance");
 
 
         // Set all motors to run without encoders.

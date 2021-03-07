@@ -53,7 +53,7 @@ import org.firstinspires.ftc.teamcode.configuration.RobotConfiguration;
  */
 
 @TeleOp(name="Pushbot: TeleopMech POV", group="Pushbot")
-class RobotTeleopMecanum extends LinearOpMode {
+public class RobotTeleOpMecanum extends LinearOpMode {
 
     /* Declare OpMode members. */
     RobotConfigWith4motors robot = new RobotConfigWith4motors();

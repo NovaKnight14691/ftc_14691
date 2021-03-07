@@ -30,22 +30,25 @@
 package org.firstinspires.ftc.teamcode.opmode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
+import org.firstinspires.ftc.teamcode.configuration.BestRobotConfiguration;
 import org.firstinspires.ftc.teamcode.configuration.RobotConfiguration;
 
-@Autonomous(name="BestChanBot: Auto Drive By Time", group="Pushbot")
+@Autonomous(name="Pushbot: Auto Drive By Time", group="Pushbot")
 
 public class BestRobotAuto extends LinearOpMode {
 
     /* Declare OpMode members. */
-    RobotConfiguration robot = new RobotConfiguration();
+    BestRobotConfiguration robot = new BestRobotConfiguration();
     private ElapsedTime runtime = new ElapsedTime();
 
 
-    static final double FORWARD_SPEED = 1;
-    static final double TURN_SPEED    = 0.8;
+    static final double FORWARD_SPEED = 0.6;
+    static final double TURN_SPEED    = 0.5;
 
     @Override
     public void runOpMode() {

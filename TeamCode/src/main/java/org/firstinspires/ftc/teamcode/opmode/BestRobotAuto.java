@@ -29,59 +29,69 @@
 
 package org.firstinspires.ftc.teamcode.opmode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.configuration.BestRobotConfiguration;
 import org.firstinspires.ftc.teamcode.configuration.RobotConfiguration;
 
-/**
- * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
- * All device access is managed through the HardwarePushbot class.
- * The code is structured as a LinearOpMode
- *
- * This particular OpMode executes a POV Game style Teleop for a PushBot
- * In this mode the left stick moves the robot FWD and back, the Right stick turns left and right.
- * It raises and lowers the claw using the Gampad Y and A buttons respectively.
- * It also opens and closes the claws slowly using the left and right Bumper buttons.
- *
- * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
- */
+@Autonomous(name="Pushbot: Distance", group="Pushbot")
 
-@TeleOp(name="Pushbot: Teleop POV", group="Pushbot")
-public class RobotTeleop extends LinearOpMode {
+public class BestRobotAuto extends LinearOpMode {
 
     /* Declare OpMode members. */
-    RobotConfiguration robot = new RobotConfiguration();
+    BestRobotConfiguration robot = new BestRobotConfiguration();
+    private ElapsedTime runtime = new ElapsedTime();
+
+
+    static final double FORWARD_SPEED = 0.6;
+    static final double TURN_SPEED    = 0.5;
+
     @Override
     public void runOpMode() {
 
-
-        /* Initialize the hardware variables.
+        /*
+         * Initialize the drive system variables.
          * The init() method of the hardware class does all the work here
          */
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "Hello Driver");
+        telemetry.addData("Status", "Ready to run");    //
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        // run until the end of the match (driver presses STOP)
-        while (opModeIsActive()) {
+        // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
-            // Output the safe vales to the motor drives.
-            robot.leftDrive.setPower(gamepad1.left_stick_y);
-            robot.rightDrive.setPower(gamepad1.left_stick_y);
-            robot.leftDrive.setPower(gamepad1.right_stick_x);
-            robot.rightDrive.setPower(gamepad1.right_stick_x);
+        // Step 1:  Drive forward for 3 seconds
+        if(robot.distance.getDistance(DistanceUnit.CM)<30){
+            robot.leftDrive.setPower(0.7);
+            robot.bleftDrive.setPower(0.7);
+            robot.rightDrive.setPower(0.7);
+            robot.brightDrive.setPower(0.7);
 
+            sleep(1000);
+
+        }else{
+            robot.leftDrive.setPower(0.7);
+            robot.bleftDrive.setPower(0.7);
+            robot.rightDrive.setPower(-0.7);
+            robot.brightDrive.setPower(-0.7);
+        }
+
+        int i = 1;
+while(i < 2){
+            telemetry.addData("distance", robot.distance.getDeviceName());
+            telemetry.addData("range", String.format("%.01f cm", robot.distance.getDistance(DistanceUnit.CM)));
+            telemetry.addData("Path", "Complete");
             telemetry.update();
+            sleep(1000);
         }
     }
 }

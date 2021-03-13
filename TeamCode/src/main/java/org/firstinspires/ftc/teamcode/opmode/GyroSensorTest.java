@@ -72,6 +72,7 @@ public class GyroSensorTest extends LinearOpMode {
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");
+        composeTelemetry();
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -79,7 +80,6 @@ public class GyroSensorTest extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            composeTelemetry();
             telemetry.update();
         }
     }

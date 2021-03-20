@@ -1,7 +1,10 @@
 package org.firstinspires.ftc.teamcode.configuration;
 
+import android.graphics.Color;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -12,6 +15,7 @@ public class RobotConfiguration {
     public DcMotor leftDrive;
     public DcMotor rightDrive;
     public BNO055IMU imu;
+    public ColorSensor colorSensor;
 
 
     /* local OpMode members. */
@@ -26,8 +30,9 @@ public class RobotConfiguration {
         // Define and Initialize Motors
         leftDrive = hwMap.get(DcMotor.class, "left_drive");
         rightDrive = hwMap.get(DcMotor.class, "right_drive");
+        colorSensor = hwMap.get(ColorSensor.class, "colorSensor");
         leftDrive.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        rightDrive.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
+        rightDrive.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motor
 
         // Set all motors to zero power
         leftDrive.setPower(0);

@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.configuration.RobotConfiguration;
 
-@Autonomous(name="Pushbot: Auto Drive By Time", group="Pushbot")
+@Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
 
 public class RobotAutoWithEncoders extends LinearOpMode {
 
